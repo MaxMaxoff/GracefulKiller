@@ -1,20 +1,23 @@
 # GracefulKiller #
 
-**GracefulKiller** python3 module for process SIGTERM and SIGINT signals gracefully
+**GracefulKiller** python3 module for process SIGTERM, SIGHUP and SIGINT signals gracefully
 
-## Requirements
+## Requirements ##
+
 * signal (build-in)
 
 ## Details ##
-### Preparations
+
+### Preparations ###
 
 Install GracefulKiller using pip:
 
 ```bash
-$ pip install [--user] gracefulkiller
+pip install [--user] gracefulkiller
 ```
 
-### Usage
+### Usage ###
+
 Import module:
 
 ```python
@@ -22,6 +25,7 @@ from GracefulKiller import GracefulKiller
 ```
 
 Example 1
+
 ```python
 # import module
 from GracefulKiller import GracefulKiller
@@ -35,6 +39,7 @@ while not killer.kill_now:
 ```
 
 Example 2
+
 ```python
 # import module
 from GracefulKiller import GracefulKiller

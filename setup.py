@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from distutils.core import setup
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(
   name = 'GracefulKiller',
   packages = ['GracefulKiller'],
-  version = '0.1',
+  version = '0.2',
   license = 'MIT',
-  description = "module for process SIGTERM and SIGINT signals gracefully",
+  description = "module for process SIGTERM, SIGHUP and SIGINT signals gracefully",
   author = 'Maxim Toropov',
   author_email = 'maxim.vt@gmail.com',
   url = 'https://github.com/MaxMaxoff/GracefulKiller',
-  download_url = 'https://github.com/MaxMaxoff/GracefulKiller/archive/v_01.tar.gz',
-  keywords = ['SIGTERM', 'SIGINT', 'GracefulKiller', 'Killer', 'Graceful'],
+  download_url = 'https://github.com/MaxMaxoff/GracefulKiller/archive/v_02.tar.gz',
+  keywords = ['SIGTERM', 'SIGINT', 'SIGHUP', 'GracefulKiller', 'Killer', 'Graceful'],
   install_requires = [
       ],
   classifiers = [
@@ -31,10 +35,9 @@ setup(
     # Specify the Python versions you support here. In particular, ensure
     # that you indicate whether you support Python 2, Python 3 or both.
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.4',
-    'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
     'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8'
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
   ]
 )
