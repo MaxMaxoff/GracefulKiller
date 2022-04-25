@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
   name = 'GracefulKiller',
   packages = ['GracefulKiller'],
-  version = '0.2',
+  version = '0.3',
   license = 'MIT',
   description = "module for process SIGTERM, SIGHUP and SIGINT signals gracefully",
   author = 'Maxim Toropov',
