@@ -51,3 +51,23 @@ killer = GracefulKiller()
 if killer.kill_now:
     sys.exit()
 ```
+
+Example 3
+
+```python
+# import module
+from GracefulKiller import GracefulKiller, Loop
+
+def shutdown_handler():
+    print("shutdown")
+    
+# create killer
+killer = GracefulKiller(shutdown_handler)
+
+# loop
+Loop(killer, 1).start()
+
+```
+
+
+
