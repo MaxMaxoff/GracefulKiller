@@ -21,8 +21,8 @@ class GracefulKiller:
             cls.instance = super(GracefulKiller, cls).__new__(cls)
         return cls.instance
 
-    def __init__(self, shutdown_handler):
-        assert callable(shutdown_handler)
+    def __init__(self, shutdown_handler=None):
+        assert shutdown_handler is None or callable(shutdown_handler)
         self.shutdown_handler = shutdown_handler
         self.kill_now = KillerEvent()
         for sig in ('TERM', 'HUP', 'INT'):

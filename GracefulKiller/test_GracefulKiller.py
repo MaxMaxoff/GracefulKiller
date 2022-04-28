@@ -19,6 +19,12 @@ class LoopTestCase(unittest.TestCase):
         Loop(killer, 1).start()
         self.kill(killer)
 
+    def test_create_killer_without_shutdown_handler(self):
+        killer = GracefulKiller()
+        Loop(killer, 1).start()
+        self.kill(killer)
+
+
 
 if __name__ == "__main__":
     unittest.main()
