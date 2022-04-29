@@ -1,6 +1,7 @@
 #!/.venv/bin/python
-
 import signal
+import threading
+import time
 from threading import Event
 
 
@@ -14,7 +15,15 @@ class KillerEvent(Event):
 
 # process SIGTERM and SIGINT signals gracefully
 class GracefulKiller:
-    def __init__(self):
+
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(GracefulKiller, cls).__new__(cls)
+        return cls.instance
+
+    def __init__(self, shutdown_handler=None):
+        assert shutdown_handler is None or callable(shutdown_handler)
+        self.shutdown_handler = shutdown_handler
         self.kill_now = KillerEvent()
         for sig in ('TERM', 'HUP', 'INT'):
             signalnum = getattr(signal, 'SIG' + sig, None)
@@ -22,5 +31,38 @@ class GracefulKiller:
                 continue
             signal.signal(signalnum, self.exit_gracefully)
 
-    def exit_gracefully(self, signum, frame):
+    def kill(self):
         self.kill_now.set()
+
+    def exit_gracefully(self, signum, frame):
+        self.kill()
+
+    def shutdown(self):
+        if self.shutdown_handler:
+            self.shutdown_handler()
+
+
+class Loop:
+
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Loop, cls).__new__(cls)
+        return cls.instance
+
+    def __init__(self, killer=None, delay=1):
+        assert killer and isinstance(killer, GracefulKiller)
+        assert isinstance(delay, (int, float))
+        self.killer = killer
+        self.delay = delay
+
+    def loop(self):
+        while not self.killer.kill_now:
+            time.sleep(self.delay)
+        self.killer.shutdown()
+
+    def start(self):
+        threading.Thread(target=self.loop, name="Thread-Loop").start()
+
+
+
+
