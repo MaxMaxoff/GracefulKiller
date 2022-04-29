@@ -8,13 +8,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
   name = 'GracefulKiller',
   packages = ['GracefulKiller'],
-  version = '0.3.1',
+  version = '0.4',
   license = 'MIT',
   description = "module for process SIGTERM, SIGHUP and SIGINT signals gracefully",
   author = 'Maxim Toropov',
   author_email = 'maxim.vt@gmail.com',
   url = 'https://github.com/MaxMaxoff/GracefulKiller',
-  download_url = 'https://github.com/MaxMaxoff/GracefulKiller/archive/v_03.tar.gz',
+  download_url = 'https://github.com/MaxMaxoff/GracefulKiller/archive/v_04.tar.gz',
   keywords = ['SIGTERM', 'SIGINT', 'SIGHUP', 'GracefulKiller', 'Killer', 'Graceful'],
   install_requires = [
       ],
