@@ -3,3 +3,4 @@ setup.cfg
 setup.py
 GracefulKiller/GracefulKiller.py
 GracefulKiller/__init__.py
+GracefulKiller/test_GracefulKiller.py
