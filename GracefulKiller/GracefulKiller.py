@@ -49,20 +49,15 @@ class Loop:
             cls.instance = super(Loop, cls).__new__(cls)
         return cls.instance
 
-    def __init__(self, killer, delay):
-        assert killer is not None and isinstance(killer, GracefulKiller)
-        if delay is None:
-            self.delay = 1
+    def __init__(self, killer=None, delay=1):
+        assert killer and isinstance(killer, GracefulKiller)
         assert isinstance(delay, (int, float))
         self.killer = killer
         self.delay = delay
 
     def loop(self):
-        while True:
-            if not self.killer.kill_now:
-                time.sleep(self.delay)
-                continue
-            break
+        while not self.killer.kill_now:
+            time.sleep(self.delay)
         self.killer.shutdown()
 
     def start(self):
