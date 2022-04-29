@@ -1,8 +1,7 @@
 import time
 import unittest
 
-
-from GracefulKiller import GracefulKiller, Loop
+from src.GracefulKiller.GracefulKiller import GracefulKiller, Loop
 
 def shutdown_handler():
     print("shutdown")
