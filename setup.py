@@ -3,9 +3,11 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+VERSION = '0.4.7'
+
 setuptools.setup(
   name = 'GracefulKiller',
-  version = '0.4.6',
+  version = VERSION,
   license = 'MIT',
   author = 'Maxim Toropov',
   author_email = 'maxim.vt@gmail.com',
@@ -13,7 +15,7 @@ setuptools.setup(
   long_description=long_description,
   long_description_content_type="text/markdown",
   url = 'https://github.com/MaxMaxoff/GracefulKiller',
-  download_url = 'https://github.com/MaxMaxoff/GracefulKiller/archive/v_04.tar.gz',
+  download_url = f'https://github.com/MaxMaxoff/GracefulKiller/archive/v{VERSION}.tar.gz',
   keywords = ['SIGTERM', 'SIGINT', 'SIGHUP', 'GracefulKiller', 'Killer', 'Graceful'],
   install_requires = [
       ],
@@ -27,6 +29,10 @@ setuptools.setup(
     'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
   ],
   package_dir={'': 'src'},
   packages=setuptools.find_packages(where="src"),
